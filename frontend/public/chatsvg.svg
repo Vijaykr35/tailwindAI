@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <!-- Background Gradient for the entire scene -->
+    <radialGradient id="bg_grad" cx="256" cy="256" r="256" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1A1F35"/>
+      <stop offset="1" stop-color="#050810"/>
+    </radialGradient>
+
+    <!-- Fill Gradient for the speech bubble -->
+    <linearGradient id="bubble_grad" x1="256" y1="56" x2="256" y2="456" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#020308"/>
+      <stop offset="0.5" stop-color="#020308"/>
+      <stop offset="0.75" stop-color="#5500A1"/>
+      <stop offset="1" stop-color="#B235E6"/>
+    </linearGradient>
+
+    <!-- Gloe effect for the bubble outline -->
+    <filter id="bubble_glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow effect for the standard neural nodes -->
+    <filter id="node_glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow effect for the central core node -->
+    <filter id="core_glow" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="512" height="512" fill="url(#bg_grad)"/>
+
+  <!-- Speech Bubble Shape (Outline and Fill) with Outer Glow -->
+  <path d="M432,56H80C49.1,56,24,81.1,24,112v240c0,30.9,25.1,56,56,56h256l96,96V408c30.9,0,56-25.1,56-56V112
+    C488,81.1,462.9,56,432,56z" 
+    fill="url(#bubble_grad)" 
+    stroke="#B235E6" 
+    stroke-width="4" 
+    filter="url(#bubble_glow)"/>
+
+  <!-- Neural Network Connections Layer -->
+  <g stroke="#914AF7" stroke-width="2" opacity="0.8">
+    <line x1="130" y1="130" x2="190" y2="130"/>
+    <line x1="130" y1="130" x2="130" y2="200"/>
+    <line x1="190" y1="130" x2="130" y2="200"/>
+    <line x1="190" y1="130" x2="250" y2="200"/>
+    <line x1="130" y1="200" x2="250" y2="200"/>
+    <line x1="250" y1="200" x2="280" y2="130"/>
+    <line x1="280" y1="130" x2="350" y2="130"/>
+    <line x1="280" y1="130" x2="280" y2="200"/>
+    <line x1="350" y1="130" x2="280" y2="200"/>
+    <line x1="350" y1="130" x2="410" y2="200"/>
+    <line x1="280" y1="200" x2="410" y2="200"/>
+    
+    <!-- Central Cluster connections -->
+    <line x1="250" y1="200" x2="310" y2="260"/>
+    <line x1="280" y1="200" x2="310" y2="260"/>
+    <line x1="410" y1="200" x2="310" y2="260"/>
+    
+    <!-- Outer Node connections -->
+    <line x1="250" y1="200" x2="170" y2="330"/>
+    <line x1="130" y1="200" x2="170" y2="330"/>
+    <line x1="170" y1="330" x2="310" y2="260"/>
+  </g>
+
+  <!-- Neural Nodes (Standard) with Inner Glow -->
+  <g fill="#914AF7" filter="url(#node_glow)">
+    <circle cx="130" cy="130" r="8"/>
+    <circle cx="190" cy="130" r="8"/>
+    <circle cx="280" cy="130" r="8"/>
+    <circle cx="350" cy="130" r="8"/>
+    <circle cx="130" cy="200" r="8"/>
+    <circle cx="250" cy="200" r="8"/>
+    <circle cx="280" cy="200" r="8"/>
+    <circle cx="410" cy="200" r="8"/>
+    <circle cx="170" cy="330" r="8"/>
+  </g>
+
+  <!-- Central Core Node (Highest intensity) -->
+  <circle cx="310" cy="260" r="14" fill="#00FFFF" filter="url(#core_glow)"/>
+</svg>

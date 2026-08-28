@@ -1,0 +1,19 @@
+# Environment variables
+.env
+.env.local
+
+# Python
+backend/__pycache__/
+backend/.venv/
+backend/chroma_db/
+backend/uploads/
+backend/data/
+*.pyc
+
+# Node
+frontend/node_modules/
+frontend/.next/
+
+# OS files
+.DS_Store
+Thumbs.db
